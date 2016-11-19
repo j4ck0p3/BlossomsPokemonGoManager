@@ -41,8 +41,8 @@ public enum UnicodeHelper {
     TYPE_ROCK(0x25C9, "〼", PokemonType.ROCK.toString()),
     TYPE_STEEL(0x26D3, "✂", PokemonType.STEEL.toString()),
     TYPE_WATER(0x26C6, "〜", PokemonType.WATER.toString()),
-    SHIELD(0x26E8, "▲", "shield"),
-    SWORD(0x2694, "▼", "sword");
+    SHIELD(0x26E8, "▼", "shield"),
+    SWORD(0x2694, "▲", "sword");
 
     private int hexaCode;
     private String unicodeSymbol;

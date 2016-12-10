@@ -3,53 +3,57 @@ package me.corriekay.pokegoutil.utils.helpers;
 import com.pokegoapi.api.pokemon.PokemonType;
 
 /** Class to Help get the Unicode character.
- * @author Fernando */
+ * @author Fernando
+ * @author j4ck0p3 */
+
 public enum UnicodeHelper {
-    NUMBER_0(0x24EA, "0"),
-    NUMBER_1(0x2460, "1"),
-    NUMBER_2(0x2461, "2"),
-    NUMBER_3(0x2462, "3"),
-    NUMBER_4(0x2463, "4"),
-    NUMBER_5(0x2464, "5"),
-    NUMBER_6(0x2465, "6"),
-    NUMBER_7(0x2466, "7"),
-    NUMBER_8(0x2467, "8"),
-    NUMBER_9(0x2468, "9"),
-    NUMBER_10(0x2469, "10"),
-    NUMBER_11(0x24EB, "11"),
-    NUMBER_12(0x24EC, "12"),
-    NUMBER_13(0x24ED, "13"),
-    NUMBER_14(0x24EE, "14"),
-    NUMBER_15(0x24EF, "15"),
-    TYPE_BUG(0x2042, PokemonType.BUG.toString()),
-    TYPE_DARK(0x263D, PokemonType.DARK.toString()),
-    TYPE_DRAGON(0x26E9, PokemonType.DRAGON.toString()),
-    TYPE_ELETRIC(0x2607, PokemonType.ELECTRIC.toString()),
-    TYPE_FAIRY(0x2764, PokemonType.FAIRY.toString()),
-    TYPE_FIGHTING(0x270A, PokemonType.FIGHTING.toString()),
-    TYPE_FIRE(0x2668, PokemonType.FIRE.toString()),
-    TYPE_FLYING(0x2708, PokemonType.FLYING.toString()),
-    TYPE_GHOST(0x26B0, PokemonType.GHOST.toString()),
-    TYPE_GRASS(0x2E19, PokemonType.GRASS.toString()),
-    TYPE_GROUND(0x26F0, PokemonType.GROUND.toString()),
-    TYPE_ICE(0x2744, PokemonType.ICE.toString()),
-    TYPE_NORMAL(0x2734, PokemonType.NORMAL.toString()),
-    TYPE_POISON(0x2620, PokemonType.POISON.toString()),
-    TYPE_PSYCHIC(0x269B, PokemonType.PSYCHIC.toString()),
-    TYPE_ROCK(0x25C9, PokemonType.ROCK.toString()),
-    TYPE_STEEL(0x26D3, PokemonType.STEEL.toString()),
-    TYPE_WATER(0x26C6, PokemonType.WATER.toString()),
-    SHIELD(0x26E8, "shield"),
-    SWORD(0x2694, "sword");
+    NUMBER_0(0x24FF, "⓿", "0"),
+    NUMBER_1(0x278A, "➊", "1"),
+    NUMBER_2(0x278B, "➋", "2"),
+    NUMBER_3(0x278C, "➌", "3"),
+    NUMBER_4(0x278D, "➍", "4"),
+    NUMBER_5(0x278E, "➎", "5"),
+    NUMBER_6(0x278F, "❻", "6"),
+    NUMBER_7(0x2790, "❼", "7"),
+    NUMBER_8(0x2791, "❽", "8"),
+    NUMBER_9(0x2792, "❾", "9"),
+    NUMBER_10(0x2793, "❿", "10"),
+    NUMBER_11(0x24EB, "⓫", "11"),
+    NUMBER_12(0x24EC, "⓬", "12"),
+    NUMBER_13(0x24ED, "⓭", "13"),
+    NUMBER_14(0x24EE, "⓮", "14"),
+    NUMBER_15(0x24EF, "⓯", "15"),
+    TYPE_BUG(0x2042, "⁂", PokemonType.BUG.toString()),
+    TYPE_DARK(0x263D, "◼", PokemonType.DARK.toString()),
+    TYPE_DRAGON(0x26E9, "⻰", PokemonType.DRAGON.toString()),
+    TYPE_ELETRIC(0x2607, "Ω", PokemonType.ELECTRIC.toString()),
+    TYPE_FAIRY(0x2764, "♥", PokemonType.FAIRY.toString()),
+    TYPE_FIGHTING(0x270A, "仝", PokemonType.FIGHTING.toString()),
+    TYPE_FIRE(0x2668, "♨", PokemonType.FIRE.toString()),
+    TYPE_FLYING(0x2708, "☁", PokemonType.FLYING.toString()),
+    TYPE_GHOST(0x26B0, "☗", PokemonType.GHOST.toString()),
+    TYPE_GRASS(0x2E19, "♣", PokemonType.GRASS.toString()),
+    TYPE_GROUND(0x26F0, "⏚", PokemonType.GROUND.toString()),
+    TYPE_ICE(0x2744, "※", PokemonType.ICE.toString()),
+    TYPE_NORMAL(0x2734, "〇", PokemonType.NORMAL.toString()),
+    TYPE_POISON(0x2620, "〻", PokemonType.POISON.toString()),
+    TYPE_PSYCHIC(0x269B, "☯", PokemonType.PSYCHIC.toString()),
+    TYPE_ROCK(0x25C9, "〼", PokemonType.ROCK.toString()),
+    TYPE_STEEL(0x26D3, "✂", PokemonType.STEEL.toString()),
+    TYPE_WATER(0x26C6, "〜", PokemonType.WATER.toString()),
+    SHIELD(0x26E8, "▼", "shield"),
+    SWORD(0x2694, "▲", "sword");
 
     private int hexaCode;
+    private String unicodeSymbol;
     private String identifier;
 
     /** Default constructor.
      * @param paramHexaCode Unicode character of this Enum
      * @param paramIdentifier String identifier of this Enum */
-    UnicodeHelper(int paramHexaCode, String paramIdentifier) {
+    UnicodeHelper(int paramHexaCode, String paramUnicodeSymbol, String paramIdentifier) {
         this.hexaCode = paramHexaCode;
+        this.unicodeSymbol = paramUnicodeSymbol;
         this.identifier = paramIdentifier;
     }
 
@@ -60,7 +64,8 @@ public enum UnicodeHelper {
     public static String get(String identifier) {
         for (UnicodeHelper uni : values()) {
             if (uni.identifier.equals(identifier)) {
-                return Character.toString((char) uni.hexaCode);
+                // return Character.toString((char) uni.hexaCode);
+                return uni.unicodeSymbol;
             }
         }
         return "";

@@ -93,13 +93,26 @@
             <id>bintray</id>
             <url>http://jcenter.bintray.com</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.pokegoapi</groupId>-->
+            <!--<artifactId>PokeGOAPI-library</artifactId>-->
+            <!--<version>0.4.1</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.pokegoapi</groupId>
-            <artifactId>PokeGOAPI-library</artifactId>
-            <version>0.4.1</version>
+            <groupId>com.github.Grover-c13</groupId>
+            <artifactId>PokeGOAPI-Java</artifactId>
+            <version>7317a049fe3cbb38e219e0056c21b29505133db4</version>
         </dependency>
+<!--         <dependency> -->
+<!--             <groupId>com.github.Wolfsblvt</groupId> -->
+<!--             <artifactId>PokeGOAPI-Java</artifactId> -->
+<!--         </dependency> -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>

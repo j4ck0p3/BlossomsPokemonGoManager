@@ -4,9 +4,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>PokeGoBot</groupId>
-    <artifactId>PokeGoBot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <groupId>BPGM</groupId>
+    <artifactId>BPGM</artifactId>
+    <version>0.1.7-beta572-3</version>
     <build>
         <sourceDirectory>src</sourceDirectory>
         <testSourceDirectory>test</testSourceDirectory>
@@ -67,6 +67,8 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <finalName>${project.name}_v${project.version}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
@@ -99,15 +101,10 @@
         </repository>
     </repositories>
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>com.pokegoapi</groupId>-->
-            <!--<artifactId>PokeGOAPI-library</artifactId>-->
-            <!--<version>0.4.1</version>-->
-        <!--</dependency>-->
         <dependency>
-            <groupId>com.github.Wolfsblvt</groupId>
+            <groupId>com.github.gegy1000</groupId>
             <artifactId>PokeGOAPI-Java</artifactId>
-            <version>f75f306df7b399adb3a3d258551f0cb3e5d2a377</version>
+            <version>fb759f0b51461d0e047ecf04bb33b12829b3e8fe</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>

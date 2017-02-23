@@ -2,8 +2,10 @@ package me.corriekay.pokegoutil.data.models.operations;
 
 import com.pokegoapi.api.map.pokemon.EvolutionResult;
 import com.pokegoapi.api.pokemon.Pokemon;
+import com.pokegoapi.exceptions.CaptchaActiveException;
 import com.pokegoapi.exceptions.LoginFailedException;
 import com.pokegoapi.exceptions.RemoteServerException;
+import com.pokegoapi.exceptions.hash.HashException;
 
 import me.corriekay.pokegoutil.data.enums.OperationError;
 import me.corriekay.pokegoutil.data.models.BpmOperationResult;
@@ -33,11 +35,29 @@ public class EvolveOperation extends Operation {
 
     @Override
     protected BpmOperationResult doOperation() throws LoginFailedException, RemoteServerException {
-        final EvolutionResult evolutionResult = pokemon.getPokemon().evolve();
+        
+        final EvolutionResult evolutionResult;
+        final String erroEvolvingString = "Error evolving %s, result: %s";
+        try {
+            evolutionResult = pokemon.getPokemon().evolve();
+        } catch (CaptchaActiveException e) {
+            e.printStackTrace();
+            return new BpmOperationResult(String.format(
+                    erroEvolvingString,
+                    pokemon.getSpecies(),
+                    "Captcha active in account"),
+                    OperationError.EVOLVE_FAIL);
+        } catch (HashException e) {
+            return new BpmOperationResult(String.format(
+                    erroEvolvingString,
+                    pokemon.getSpecies(),
+                    "Error with Hash: " + e.getMessage()),
+                    OperationError.EVOLVE_FAIL);
+        }
 
         if (!evolutionResult.isSuccessful()) {
             return new BpmOperationResult(String.format(
-                    "Error evolving %s, result: %s",
+                    erroEvolvingString,
                     pokemon.getSpecies(),
                     evolutionResult.getResult().toString()),
                     OperationError.EVOLVE_FAIL);

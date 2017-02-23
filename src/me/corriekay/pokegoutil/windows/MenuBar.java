@@ -18,10 +18,12 @@ import javax.swing.*;
 public class MenuBar extends JMenuBar {
 
     private final PokemonGo go;
+    private final PokemonTab pokemonTab;
     private ConfigNew config = ConfigNew.getConfig();
 
     public MenuBar(PokemonGo go, PokemonTab pokemonTab) {
         this.go = go;
+        this.pokemonTab = pokemonTab;
 
         JMenu file, settings, help;
 
@@ -87,6 +89,15 @@ public class MenuBar extends JMenuBar {
                 SwingUtilities.invokeLater(pokemonTab::refreshList);
             });
         settings.add(alternativeIVCalculation);
+        JMenuItem saveColumnOrder = new JMenuItem("Save Column Order");
+        saveColumnOrder.addActionListener(al -> {
+            try {
+                pokemonTab.saveColumnOrder();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        settings.add(saveColumnOrder);
 
         add(settings);
 
@@ -128,7 +139,7 @@ public class MenuBar extends JMenuBar {
                 + StringLiterals.NEWLINE + "Thanks to Grover for providing"
                 + StringLiterals.NEWLINE + "such a great API."
                 + StringLiterals.NEWLINE
-                + StringLiterals.NEWLINE + "Thanks for Draseart for"
+                + StringLiterals.NEWLINE + "Thanks to Draseart for "
                 + "the icon art.",
             "About Blossom's Pokémon Go Manager", JOptionPane.PLAIN_MESSAGE));
         help.add(about);
@@ -141,7 +152,7 @@ public class MenuBar extends JMenuBar {
     }
 
     private void displayTrainerStats() throws Exception {
-        go.getInventories().updateInventories(true);
+        go.getInventories().updateInventories();
         PlayerProfile pp = go.getPlayerProfile();
         Stats stats = pp.getStats();
         Object[] tstats = {

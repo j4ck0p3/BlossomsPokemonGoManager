@@ -40,6 +40,7 @@ import com.pokegoapi.exceptions.request.RequestFailedException;
 
 import POGOProtos.Enums.PokemonFamilyIdOuterClass.PokemonFamilyId;
 import POGOProtos.Networking.Responses.GetInventoryResponseOuterClass.GetInventoryResponse;
+import POGOProtos.Networking.Responses.GetHoloInventoryResponseOuterClass.GetHoloInventoryResponse;
 import POGOProtos.Networking.Responses.NicknamePokemonResponseOuterClass.NicknamePokemonResponse;
 import POGOProtos.Networking.Responses.ReleasePokemonResponseOuterClass.ReleasePokemonResponse;
 import POGOProtos.Networking.Responses.SetFavoritePokemonResponseOuterClass.SetFavoritePokemonResponse;
@@ -216,7 +217,7 @@ public class PokemonTab extends JPanel {
      */
     private void refreshPkmn() {
         try {
-            final GetInventoryResponse updateInventories = go.getInventories().updateInventories(true);
+            final GetHoloInventoryResponse updateInventories = go.getInventories().updateInventories(true);
             go.getInventories().updateInventories(updateInventories);
         } catch (RequestFailedException e) {
             System.out.println("Error obtaining updated list from server");
@@ -446,7 +447,7 @@ public class PokemonTab extends JPanel {
                     return;
                 }
 
-                final EvolutionResult evolutionResultWrapper;
+                EvolutionResult evolutionResultWrapper;
                 final EvolveHelper evolve = MAP_POKEMON_ITEM.get(poke.getId());
                 if (evolve != null && evolve.isEvolveWithItem()) {
                     evolutionResultWrapper = poke.evolve(evolve.getItemToEvolveId());
@@ -523,8 +524,8 @@ public class PokemonTab extends JPanel {
 
                 // If not last element, sleep until the next one
                 if (!selection.get(selection.size() - 1).equals(poke)) {
-                    final int sleepMin;
-                    final int sleepMax;
+                    int sleepMin;
+                    int sleepMax;
                     if (afterTransfer) {
                         sleepMin = config.getInt(ConfigKey.DELAY_TRANSFER_MIN);
                         sleepMax = config.getInt(ConfigKey.DELAY_TRANSFER_MAX);
@@ -683,7 +684,7 @@ public class PokemonTab extends JPanel {
                             total.getValue(),
                             selection.size()));
                     total.increment();
-                    final boolean favorite;
+                    boolean favorite;
                     if (operation.equals(BatchOperation.SET_FAVORITE_YES)) {
                         favorite = true;
                     } else if (operation.equals(BatchOperation.SET_FAVORITE_NO)) {

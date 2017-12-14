@@ -102,9 +102,9 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>com.github.Furtif</groupId>
+            <groupId>com.github.j4ck0p3</groupId>
             <artifactId>PokeGOAPI-Java</artifactId>
-            <version>1421efd962</version>
+            <version>ace4e481dd</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>

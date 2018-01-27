@@ -54,7 +54,7 @@ public final class LoginHelper {
         if (pokeHashKey != null) {
             final PokeHashProvider pokeHashProvider = new PokeHashProvider(PokeHashKey.from(pokeHashKey), true);
             // All current supported endpoints are listed here: https://pokehash.buddyauth.com/api/hash/versions
-            pokeHashProvider.setEndpoint("http://pokehash.buddyauth.com/api/v153_2/hash");
+            pokeHashProvider.setEndpoint("http://pokehash.buddyauth.com/api/v159_1/hash");
             go.login(credentialProvider, pokeHashProvider);
         }
     }

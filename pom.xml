@@ -104,7 +104,7 @@
         <dependency>
             <groupId>com.github.Furtif</groupId>
             <artifactId>PokeGOAPI-Java</artifactId>
-            <version>db7bfd04ab</version>
+            <version>9e1f2a348f</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>

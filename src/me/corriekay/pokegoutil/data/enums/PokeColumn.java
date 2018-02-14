@@ -403,6 +403,12 @@ public enum PokeColumn {
             return p.getPokemonDisplay() != null ? p.getPokemonDisplay().getCostume().toString() : "";
         }
     },
+    FORM("Form", ColumnType.STRING) {
+        @Override
+        public Object get(final Pokemon p) {
+            return p.getPokemonDisplay() != null ? p.getPokemonDisplay().getForm().toString() : "";
+        }
+    },
     GENDER("Gender", ColumnType.STRING) {
         @Override
         public Object get(final Pokemon p) {
